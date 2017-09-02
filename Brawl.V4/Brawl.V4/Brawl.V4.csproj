@@ -44,8 +44,13 @@
     <Compile Include="Source\Main.cs" />
     <Compile Include="Source\Menu\Gui\Button.cs" />
     <Compile Include="Source\Menu\Gui\Render2D.cs" />
+    <Compile Include="Source\Menu\Gui\Sprite.cs" />
+    <Compile Include="Source\Menu\Gui\TextList.cs" />
     <Compile Include="Source\Menu\Main\MainMenuController.cs" />
+    <Compile Include="Source\Menu\Skills\SkillGrid.cs" />
+    <Compile Include="Source\Menu\Skills\SkillGridCreator.cs" />
     <Compile Include="Source\Menu\Skills\SkillMenuController.cs" />
+    <Compile Include="Source\Menu\Skills\SkillNode.cs" />
     <Compile Include="Source\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -58,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\button.png" />
+    <Content Include="Content\Node.png" />
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>

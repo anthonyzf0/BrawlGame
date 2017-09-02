@@ -48,3 +48,4 @@ C:\Users\antho\OneDrive\Documents\GitHub\BrawlGame\Brawl.V4\Brawl.V4\bin\Windows
 C:\Users\antho\OneDrive\Documents\GitHub\BrawlGame\Brawl.V4\Brawl.V4\bin\Windows\x86\Debug\SharpDX.XInput.xml
 C:\Users\antho\OneDrive\Documents\GitHub\BrawlGame\Brawl.V4\Brawl.V4\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
 C:\Users\antho\OneDrive\Documents\GitHub\BrawlGame\Brawl.V4\Brawl.V4\obj\x86\Debug\Brawl.V4.csprojResolveAssemblyReference.cache
+C:\Users\antho\OneDrive\Documents\GitHub\BrawlGame\Brawl.V4\Brawl.V4\bin\Windows\x86\Debug\Content\Node.xnb

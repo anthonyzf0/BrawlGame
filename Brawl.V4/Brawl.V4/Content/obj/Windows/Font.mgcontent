@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SourceFile>C:/Users/antho/OneDrive/Documents/GitHub/BrawlGame/Brawl.V4/Brawl.V4/Content/Font.spritefont</SourceFile>
+  <SourceTime>2017-09-01T17:40:39.1871641-04:00</SourceTime>
+  <DestFile>C:/Users/antho/OneDrive/Documents/GitHub/BrawlGame/Brawl.V4/Brawl.V4/Content/bin/Windows/Font.xnb</DestFile>
+  <DestTime>2017-09-01T23:35:56.6085236-04:00</DestTime>
+  <Importer>FontDescriptionImporter</Importer>
+  <ImporterTime>2017-03-01T10:05:36-05:00</ImporterTime>
+  <Processor>FontDescriptionProcessor</Processor>
+  <ProcessorTime>2017-03-01T10:05:36-05:00</ProcessorTime>
+  <Parameters>
+    <Key>PremultiplyAlpha</Key>
+    <Value>True</Value>
+  </Parameters>
+  <Parameters>
+    <Key>TextureFormat</Key>
+    <Value>Compressed</Value>
+  </Parameters>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput />
+</PipelineBuildEvent>

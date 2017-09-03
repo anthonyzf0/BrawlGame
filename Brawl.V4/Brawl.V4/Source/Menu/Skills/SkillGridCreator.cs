@@ -14,7 +14,8 @@ namespace Brawl.V4.Source.Menu.Skills
         public SkillGridCreator()
         {
             //Test
-            addNode(GridType.Projectile,3,3,new string[]{ "aaa", "bbb", "ccc" });
+            addNode(GridType.Projectile, 3, 3, new string[] { "On Trigger", "On Hit", "On Start" });
+            addNode(GridType.Projectile, 7, 7, new string[] { "Grow", "Shrink"});
 
         }
 

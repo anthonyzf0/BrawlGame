@@ -47,6 +47,7 @@
     <Compile Include="Source\Menu\Gui\Sprite.cs" />
     <Compile Include="Source\Menu\Gui\TextList.cs" />
     <Compile Include="Source\Menu\Main\MainMenuController.cs" />
+    <Compile Include="Source\Menu\Skills\NodeConnection.cs" />
     <Compile Include="Source\Menu\Skills\SkillGrid.cs" />
     <Compile Include="Source\Menu\Skills\SkillGridCreator.cs" />
     <Compile Include="Source\Menu\Skills\SkillMenuController.cs" />

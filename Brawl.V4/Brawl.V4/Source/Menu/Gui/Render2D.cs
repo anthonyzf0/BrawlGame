@@ -83,6 +83,11 @@ namespace Brawl.V4.Source.Menu.Gui
         {
             spriteBatch.Draw(textures["box"], new Rectangle(x, y, w, h), c);
         }
+        public void drawBox(int x, int y, int w, int h, Color c, double rotation)
+        {
+            Rectangle r = new Rectangle(x, y, w, h);
+            spriteBatch.Draw(textures["box"], r, r, c, (float)rotation, new Vector2(0, 0.5f), SpriteEffects.None, 0);
+        }
 
     }
 }

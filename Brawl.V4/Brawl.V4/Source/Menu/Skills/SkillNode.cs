@@ -17,6 +17,7 @@ namespace Brawl.V4.Source.Menu.Skills
         //Info on this node
         private int x, y, centerX, centerY;
         private String[] values;
+        public bool clicked = false;
 
         //The button for this node & its graphics
         private Button button;
@@ -43,7 +44,7 @@ namespace Brawl.V4.Source.Menu.Skills
 
         }
 
-        public void update()
+        public bool update()
         {
             //Update node sprite
             nodeImage.update();
@@ -57,16 +58,30 @@ namespace Brawl.V4.Source.Menu.Skills
             //Click to toggle list
             if (button.right)
                 currentValue = list.toggle();
+
+            //Register clicks
+            clicked = button.left;
+
+            return button.right;
+        }
+
+        //Gets the nodes center for connection reasons
+        public Vector2 getCenter()
+        {
+            return new Vector2(centerX, centerY);
         }
         
         //Draw image
-        public void draw(Render2D view)
+        public void drawBackground(Render2D view)
         {
             nodeImage.draw(view);
+        }
 
+        public void drawForeground(Render2D view)
+        {
             //List of options
             if (button.hover)
-                list.draw(Mouse.GetState().Position,view);
+                list.draw(Mouse.GetState().Position, view);
 
             //Text
             view.drawText(centerX, centerY, currentValue, Color.White);

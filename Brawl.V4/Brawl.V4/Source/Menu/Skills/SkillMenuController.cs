@@ -1,4 +1,5 @@
 ﻿using Brawl.V4.Source.Menu.Gui;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,6 +42,11 @@ namespace Brawl.V4.Source.Menu.Skills
 
             //Skill grid
             skillgGrid.update();
+
+            //TODO do something with this
+            if (Keyboard.GetState().IsKeyDown(Keys.Q)) {
+                string a = skillgGrid.generateCode();
+            }
 
         }
 

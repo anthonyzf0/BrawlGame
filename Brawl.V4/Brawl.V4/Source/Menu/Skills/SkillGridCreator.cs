@@ -15,7 +15,8 @@ namespace Brawl.V4.Source.Menu.Skills
         {
             //Test
             addNode(GridType.Projectile, 3, 3, new string[] { "On Trigger", "On Hit", "On Start" });
-            addNode(GridType.Projectile, 7, 7, new string[] { "Grow", "Shrink"});
+            addNode(GridType.Projectile, 17, 17, new string[] { "Grow", "Shrink" });
+            addNode(GridType.Projectile, 7, 17, new string[] { "Stick"});
 
         }
 

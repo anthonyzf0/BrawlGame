@@ -15,7 +15,7 @@ namespace Brawl.V4.Source.Menu.Main
         private Dictionary<String, Button> buttons = new Dictionary<string, Button>();
 
         //Menu State
-        private enum MenuState {Main, Options, Credits };
+        private enum MenuState {Main, Options, Credits, HostSetup };
         private MenuState menuState = MenuState.Main;
 
         //MenuLists
@@ -27,16 +27,17 @@ namespace Brawl.V4.Source.Menu.Main
         public MainMenuController(Func<string, int> callback)
         {
             this.callback = callback;
-            
+
             //Create buttons
-            createButton("join", "Join A Game", 300);
+            createButton("host", "Host A Game", 230);   //TODO add this
+            createButton("join", "Join A Game", 300);   //TODO add this
             createButton("skill", "Setup Skills", 370);
             createButton("options", "Options", 440);
             createButton("credits", "Credits", 510);
             createButton("back", "Back", 580);
 
             //Sets what buttons are shown when
-            menuButtons.Add(MenuState.Main, new List<string> { "join", "skill", "options", "credits" });
+            menuButtons.Add(MenuState.Main, new List<string> { "host", "join", "skill", "options", "credits" });
             menuButtons.Add(MenuState.Credits, new List<string> { "back" });
             menuButtons.Add(MenuState.Options, new List<string> { "back" });
 
@@ -61,6 +62,12 @@ namespace Brawl.V4.Source.Menu.Main
 
                     if (buttons["skill"].left)
                         callback("skill");
+
+                    if (buttons["host"].left)
+                        callback("startServer");
+
+                    if (buttons["join"].left)
+                        callback("joinServer");
 
                     break;
 

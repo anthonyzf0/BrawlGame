@@ -14,8 +14,7 @@ namespace Brawl.V4.Source.Menu.Gui
         private static List<Button> buttons = new List<Button>();
 
         //InputValues
-        public bool right, lastRight;
-        public bool left, lastLeft;
+        public bool right, left;
         public bool hover;
 
         //Location and image
@@ -51,13 +50,11 @@ namespace Brawl.V4.Source.Menu.Gui
         //Called to update values
         public void leftClick(bool value)
         {
-            left = value && hover && !lastLeft;
-            lastLeft = value && hover;
+            left = hover & value;
         }
         public void rightClick(bool value)
         {
-            right = value && hover && !lastRight;
-            lastRight = value && hover;
+            right = value && hover;
         }
 
         public void checkHover(Point p)
@@ -72,8 +69,8 @@ namespace Brawl.V4.Source.Menu.Gui
             MouseState mouse = Mouse.GetState();
             Point p = mouse.Position;
 
-            bool left = mouse.LeftButton == ButtonState.Pressed;
-            bool right = mouse.RightButton == ButtonState.Pressed;
+            bool left = InputHandler.leftClick;
+            bool right = InputHandler.rightClick;
 
             foreach (Button b in buttons)
             {

@@ -1,4 +1,5 @@
 ﻿using Brawl.V4.Source.Menu.Gui;
+using Brawl.V4.Source.Menu.Skills.SkillConnection;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System;
@@ -24,6 +25,12 @@ namespace Brawl.V4.Source.Menu.Skills
         private List<NodeConnection> connections = new List<NodeConnection>();
         private NodeConnection mouseConnection;
 
+        //Stars
+        private Random rand = new Random();
+        private int starCount = 400;
+        private Vector2 starSize = new Vector2(800, 700);
+        private List<Vector2> points = new List<Vector2>();
+
         //Mouse click
         private bool lastMouseClick = false;
 
@@ -36,7 +43,11 @@ namespace Brawl.V4.Source.Menu.Skills
             nodes = gridLoader.getGrid(gridType);
 
             //Connections
-            mouseConnection = new NodeConnection(-1, -1, Vector2.Zero, new Vector2(300, 300));
+            mouseConnection = new NodeConnection(-1, -1, Vector2.Zero, new Vector2(300, 300), true);
+
+            //GenStars
+            for (int i = 0; i < starCount; i++)
+                points.Add(new Vector2((float)rand.NextDouble() * starSize.X, (float)rand.NextDouble() * starSize.Y));
 
         }
 
@@ -83,10 +94,16 @@ namespace Brawl.V4.Source.Menu.Skills
 
                     return;
             } }
-        
+
             //Update connections
             foreach (NodeConnection c in connections)
-                c.update();
+
+                //Returns true if the node has been killed
+                if (c.update())
+                {
+                    connections.Remove(c);
+                    break;
+                }
 
             //If you right click and you didnt trigger a swap on a node
             bool thisClick = Mouse.GetState().RightButton == ButtonState.Pressed;
@@ -99,10 +116,46 @@ namespace Brawl.V4.Source.Menu.Skills
             mouseConnection.update();
         }
 
+        //Gets the code from a point i on the grid
+        private String getChildrenCode(int i)
+        {
+            String code = nodes[i].currentValue + "[";
+            foreach (NodeConnection c in connections)
+                if (c.nodeA == i)
+                    code += getChildrenCode(c.nodeB);
+
+            return code + "]";
+        }
+
+        //Gets a code from the start of the grid
+        public String generateCode()
+        {
+            String code = "";
+
+            for(int i = 0; i < nodes.Count; i++) { 
+
+                bool noParent = true;
+
+                //If no node has a child of this node, then it is good
+                foreach (NodeConnection other in connections)
+                    if (other.nodeB == i)
+                        noParent = false;
+
+                if (noParent)
+                    code += getChildrenCode(i);
+
+            }
+
+            return code;
+        }
+
         public void draw(Render2D view)
         {
             //Makes the mouse line ready to draw
             adjustMouseLine();
+
+            foreach (Vector2 v in points)
+                view.drawBox((int)v.X, (int)v.Y, 2, 2, Color.White);
 
             //Draw node connections
             foreach (NodeConnection c in connections)

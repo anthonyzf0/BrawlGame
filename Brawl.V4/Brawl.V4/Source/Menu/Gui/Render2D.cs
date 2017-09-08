@@ -22,14 +22,14 @@ namespace Brawl.V4.Source.Menu.Gui
 
         public Render2D(GraphicsDevice graphics, ContentManager content)
         {
-            font = content.Load<SpriteFont>("Font");
+            font = content.Load<SpriteFont>("Font/Font");
             spriteBatch = new SpriteBatch(graphics);
 
             //All the textures to load
-            List<String> textures = new List<string> { "button", "Node" };
+            List<String> textures = new List<string> { "button", "Node", "star" };
 
             foreach (String s in textures)
-                this.textures[s] = content.Load<Texture2D>(s);
+                this.textures[s] = content.Load<Texture2D>("Gui/"+s);
 
             //Other textures
             this.textures["box"] = new Texture2D(graphics, 1, 1);

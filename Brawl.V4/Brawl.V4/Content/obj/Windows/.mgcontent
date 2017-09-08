@@ -4,8 +4,11 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/antho/OneDrive/Documents/GitHub/BrawlGame/Brawl.V4/Brawl.V4/Content/Font.spritefont</File>
-    <File>C:/Users/antho/OneDrive/Documents/GitHub/BrawlGame/Brawl.V4/Brawl.V4/Content/button.png</File>
-    <File>C:/Users/antho/OneDrive/Documents/GitHub/BrawlGame/Brawl.V4/Brawl.V4/Content/Node.png</File>
+    <File>C:/Users/antho/OneDrive/Documents/GitHub/BrawlGame/Brawl.V4/Brawl.V4/Content/Gui/button.png</File>
+    <File>C:/Users/antho/OneDrive/Documents/GitHub/BrawlGame/Brawl.V4/Brawl.V4/Content/Gui/Node.png</File>
+    <File>C:/Users/antho/OneDrive/Documents/GitHub/BrawlGame/Brawl.V4/Brawl.V4/Content/Gui/star.png</File>
+    <File>C:/Users/antho/OneDrive/Documents/GitHub/BrawlGame/Brawl.V4/Brawl.V4/Content/Font/Font.spritefont</File>
+    <File>C:/Users/antho/OneDrive/Documents/GitHub/BrawlGame/Brawl.V4/Brawl.V4/Content/Models/MonoCube.dae</File>
+    <File>C:/Users/antho/OneDrive/Documents/GitHub/BrawlGame/Brawl.V4/Brawl.V4/Content/Models/MonoCubeTexture.png</File>
   </SourceFiles>
 </SourceFileCollection>

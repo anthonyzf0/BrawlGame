@@ -25,8 +25,6 @@ C:\Users\antho\Desktop\Networking\Brawl.V4\Brawl.V4\obj\x86\Debug\Brawl.V4.pdb
 C:\Users\antho\Desktop\Networking\Brawl.V4\Brawl.V4\bin\Windows\x86\Debug\Content\button.xnb
 C:\Users\antho\OneDrive\Documents\GitHub\BrawlGame\Brawl.V4\Brawl.V4\obj\x86\Debug\Brawl.V4.exe
 C:\Users\antho\OneDrive\Documents\GitHub\BrawlGame\Brawl.V4\Brawl.V4\obj\x86\Debug\Brawl.V4.pdb
-C:\Users\antho\OneDrive\Documents\GitHub\BrawlGame\Brawl.V4\Brawl.V4\bin\Windows\x86\Debug\Content\button.xnb
-C:\Users\antho\OneDrive\Documents\GitHub\BrawlGame\Brawl.V4\Brawl.V4\bin\Windows\x86\Debug\Content\Font.xnb
 C:\Users\antho\OneDrive\Documents\GitHub\BrawlGame\Brawl.V4\Brawl.V4\bin\Windows\x86\Debug\Brawl.V4.exe
 C:\Users\antho\OneDrive\Documents\GitHub\BrawlGame\Brawl.V4\Brawl.V4\bin\Windows\x86\Debug\Brawl.V4.pdb
 C:\Users\antho\OneDrive\Documents\GitHub\BrawlGame\Brawl.V4\Brawl.V4\bin\Windows\x86\Debug\MonoGame.Framework.dll
@@ -48,4 +46,10 @@ C:\Users\antho\OneDrive\Documents\GitHub\BrawlGame\Brawl.V4\Brawl.V4\bin\Windows
 C:\Users\antho\OneDrive\Documents\GitHub\BrawlGame\Brawl.V4\Brawl.V4\bin\Windows\x86\Debug\SharpDX.XInput.xml
 C:\Users\antho\OneDrive\Documents\GitHub\BrawlGame\Brawl.V4\Brawl.V4\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
 C:\Users\antho\OneDrive\Documents\GitHub\BrawlGame\Brawl.V4\Brawl.V4\obj\x86\Debug\Brawl.V4.csprojResolveAssemblyReference.cache
-C:\Users\antho\OneDrive\Documents\GitHub\BrawlGame\Brawl.V4\Brawl.V4\bin\Windows\x86\Debug\Content\Node.xnb
+C:\Users\antho\OneDrive\Documents\GitHub\BrawlGame\Brawl.V4\Brawl.V4\bin\Windows\x86\Debug\Content\Font\Font.xnb
+C:\Users\antho\OneDrive\Documents\GitHub\BrawlGame\Brawl.V4\Brawl.V4\bin\Windows\x86\Debug\Content\Gui\button.xnb
+C:\Users\antho\OneDrive\Documents\GitHub\BrawlGame\Brawl.V4\Brawl.V4\bin\Windows\x86\Debug\Content\Gui\Node.xnb
+C:\Users\antho\OneDrive\Documents\GitHub\BrawlGame\Brawl.V4\Brawl.V4\bin\Windows\x86\Debug\Content\Gui\star.xnb
+C:\Users\antho\OneDrive\Documents\GitHub\BrawlGame\Brawl.V4\Brawl.V4\bin\Windows\x86\Debug\Content\Models\MonoCube.xnb
+C:\Users\antho\OneDrive\Documents\GitHub\BrawlGame\Brawl.V4\Brawl.V4\bin\Windows\x86\Debug\Content\Models\MonoCubeTexture.xnb
+C:\Users\antho\OneDrive\Documents\GitHub\BrawlGame\Brawl.V4\Brawl.V4\bin\Windows\x86\Debug\Content\Models\MonoCubeTexture_0.xnb

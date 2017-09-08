@@ -23,7 +23,7 @@ namespace Brawl.V4.Source.Menu.Skills
         private Button button;
         private TextList list;
         private Sprite nodeImage;
-        private String currentValue;
+        public String currentValue;
 
         public SkillNode(int xloc, int yloc, String[] values)
         {
@@ -40,7 +40,7 @@ namespace Brawl.V4.Source.Menu.Skills
 
             //Create button for the click & hover
             button = new Button(x, y, nodeSize, nodeSize);
-            nodeImage = new Sprite(centerX, centerY, nodeSize, "Node");
+            nodeImage = new Sprite(centerX, centerY, nodeSize, "star");
 
         }
 
@@ -84,7 +84,7 @@ namespace Brawl.V4.Source.Menu.Skills
                 list.draw(Mouse.GetState().Position, view);
 
             //Text
-            view.drawText(centerX, centerY, currentValue, Color.White);
+            view.drawText(centerX, centerY + 20, currentValue, Color.White);
         }
 
     }

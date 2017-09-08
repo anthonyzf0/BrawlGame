@@ -1,9 +1,13 @@
-﻿using Brawl.V4.Source.Menu.Gui;
+﻿using Brawl.V4.Source;
+using Brawl.V4.Source.Game;
+using Brawl.V4.Source.Menu.Gui;
 using Brawl.V4.Source.Menu.Main;
 using Brawl.V4.Source.Menu.Skills;
+using Brawl.V4.Source.Server;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Diagnostics;
 
 namespace Brawl.V4
 {
@@ -13,16 +17,26 @@ namespace Brawl.V4
         public static int windowX = 1200, windowY = 800;
 
         //Game state variable
-        private enum GameState { Main, Skill, Play };
+        private enum GameState { Main, Skill, Play, StartServer, JoinServer };
         private static GameState gameState = GameState.Main;
 
         //Controllers for varios gamestates
         MainMenuController mainMenu;
         SkillMenuController skillMenu;
+        ServerController server;
+        GameController game;
 
         //Graphics conponents
         GraphicsDeviceManager graphics3D;     //3D renderer
         Render2D graphics2D;                  //2D renderer
+
+        //inputs
+        InputHandler inputs;
+
+        //FPS
+        Stopwatch timer;
+        int frames = 0;
+        float fps = 1;
 
         public Main()
         {
@@ -33,8 +47,14 @@ namespace Brawl.V4
         protected override void Initialize()
         {
             //Controllers
-            mainMenu = new MainMenuController(adjustState);
-            skillMenu = new SkillMenuController(adjustState);
+            mainMenu = new MainMenuController(adjustState);     //Main menu buttons
+            skillMenu = new SkillMenuController(adjustState);   //Skill menu buttons
+            inputs = new InputHandler();                        //Mouse clicking
+            server = new ServerController();                    //Running server
+            game = new GameController(graphics3D);              //Running client
+
+            timer = new Stopwatch();
+            timer.Start();
 
             //Create spriteBatch for the graphics
             graphics2D = new Render2D(GraphicsDevice, Content);
@@ -50,11 +70,21 @@ namespace Brawl.V4
         
         protected override void Update(GameTime gameTime)
         {
+            //Frames
+            frames++;
+            if (timer.Elapsed.TotalSeconds > 1)
+            {
+                fps = frames;
+                frames = 0;
+                timer.Restart();
+            }
+
             //TODO fix this
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
             //Updates all the button values
+            inputs.update();
             Button.update();
 
             switch (gameState)
@@ -74,7 +104,22 @@ namespace Brawl.V4
 
                 case GameState.Play:
 
+                    game.update();
 
+                    break;
+
+                case GameState.StartServer:
+
+                    //Starts server and plays
+                    server.startServer();
+                    gameState = GameState.JoinServer;
+
+                    break;
+
+                case GameState.JoinServer:
+
+                    game.connect(Content);
+                    gameState = GameState.Play;
 
                     break;
             }
@@ -84,14 +129,15 @@ namespace Brawl.V4
 
         public static int adjustState(string state)
         {
-            if (state == "play")
-                gameState = GameState.Play;
             if (state == "main")
                 gameState = GameState.Main;
             if (state == "skill")
                 gameState = GameState.Skill;
-
-            //TODO FIX IDK why this need to be here, but the button callback wont work if this doesnt return a number
+            if (state == "startServer")
+                gameState = GameState.StartServer;
+            if (state == "joinServer")
+                gameState = GameState.JoinServer;
+            
             return 0;
         }
         
@@ -99,8 +145,8 @@ namespace Brawl.V4
         protected override void Draw(GameTime gameTime)
         {
             //Clear display
-            GraphicsDevice.Clear(Color.CornflowerBlue);
-
+            GraphicsDevice.Clear(Color.Black);
+            
             switch (gameState)
             {
                 //Main menu draw
@@ -121,8 +167,21 @@ namespace Brawl.V4
                     break;
 
                 case GameState.Play:
+
+                    GraphicsDevice.DepthStencilState = DepthStencilState.Default;
+
+                    game.draw();
+
                     break;
             }
+
+            //Frames per sec
+            graphics2D.start();
+
+            graphics2D.drawText("FPS: " + fps, 0, 0);
+
+            graphics2D.end();
+
 
             base.Draw(gameTime);
         }

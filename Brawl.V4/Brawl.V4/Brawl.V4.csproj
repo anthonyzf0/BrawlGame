@@ -47,6 +47,7 @@
     <Compile Include="Source\Game\Player.cs" />
     <Compile Include="Source\Game\Render\Render3D.cs" />
     <Compile Include="Source\Game\Terrain\Block.cs" />
+    <Compile Include="Source\Game\Terrain\Collision.cs" />
     <Compile Include="Source\Game\Terrain\Map.cs" />
     <Compile Include="Source\InputHandler.cs" />
     <Compile Include="Source\Main.cs" />

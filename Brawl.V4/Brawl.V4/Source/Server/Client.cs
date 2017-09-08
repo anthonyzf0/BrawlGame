@@ -13,6 +13,7 @@ namespace Brawl.V4.Source.Server
     {
         //Default block size
         private static Vector3 size = new Vector3(0.2f, 0.4f, 0.2f);
+        private static Vector3 gravity = new Vector3(0, -12f, 0);
 
         //Network data
         private NetworkStream stream;
@@ -28,8 +29,7 @@ namespace Brawl.V4.Source.Server
 
         public void init(Map m)
         {
-            //TODO add some sort of spawnPoint
-            blockId = m.addBlock(Vector3.Zero, size);
+            blockId = m.addBlock(Vector3.Zero, size,Vector3.Zero, gravity, "player");
             EventController.addEvent("init " + blockId);
 
         }

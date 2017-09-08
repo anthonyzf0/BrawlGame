@@ -100,12 +100,14 @@ namespace Brawl.V4.Source.Game.Network
 
                 switch (command[0])
                 {
-                    case "newBlock":    //newBlock [id] [position] [size]
+                    case "newBlock":    //newBlock [id] [position] [size] [velocity] [acceleration] [tag]
 
                         Vector3 position = recieveVector(command, 2);
                         Vector3 size = recieveVector(command, 5);
+                        Vector3 velocity = recieveVector(command, 8);
+                        Vector3 acceleration = recieveVector(command, 11);
 
-                        map.createBlock(id, position, size);
+                        map.createBlock(id, position, size, velocity, acceleration, command[14]);
 
                         break;
 

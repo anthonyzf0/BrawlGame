@@ -60,7 +60,10 @@ namespace Brawl.V4.Source.Game
 
             //Update game itself
             player.update(deltaTime, map);
-            map.update(deltaTime);
+            map.update(deltaTime, player);
+
+            //After everything is updated, send the player data to the server
+            player.sendData(map);
 
             //Sends all the messages queued to be sent
             network.sendQueuedMsgs();
@@ -71,8 +74,6 @@ namespace Brawl.V4.Source.Game
         {
             //Smooth camera before drawing
             Camera.update();
-
-            render.draw("MonoCube",new Vector3(3,0,0), Vector3.One);
 
             //Draws map
             map.draw(render);

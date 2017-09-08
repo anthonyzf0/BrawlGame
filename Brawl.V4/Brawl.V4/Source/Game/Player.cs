@@ -13,9 +13,14 @@ namespace Brawl.V4.Source.Game
     class Player
     {
         //Stats
-        private float speed = 2;
+        private float speed = 3;
+        private int jumps = 2;
+        private float jumpPower = 7;
         
-        private int blockId;
+        //Id of local block that is the player
+        public int blockId;
+
+        private Vector3 lastPosition;
 
         public Player()
         {
@@ -36,9 +41,12 @@ namespace Brawl.V4.Source.Game
         {
             //If you arnt setup, dont bother
             if (blockId == -1) return;
+            
+            //Save last location
+            lastPosition = map.getBlock(blockId).position;
 
+            //Moves player
             Vector3 delta = Vector3.Zero;
-            //TODO change
             if (Keyboard.GetState().IsKeyDown(Keys.A))
                 delta -= getMovement(Vector3.Left, t);
 
@@ -51,16 +59,43 @@ namespace Brawl.V4.Source.Game
             if (Keyboard.GetState().IsKeyDown(Keys.S))
                 delta -= getMovement(Vector3.Forward, t);
 
-            if (delta != Vector3.Zero)
-            {
-                //Move block
-                map.getBlock(blockId).position += delta;
-                Camera.camPosition = map.getBlock(blockId).position;
+            //Jumps
+            if (InputHandler.space)
+                jump(map);
+            
+            //Adjust the value
+            delta = map.playerMovement(blockId, delta);
 
-                ServerConnection.sendMessage("move", map.getBlock(blockId).position);
-            }
+            //Move block
+            map.getBlock(blockId).position += delta;
+            
+            Camera.camPosition = map.getBlock(blockId).position;
+
+            //Refresh jumps if you have landed
+            if (map.getBlock(blockId).grounded)
+                jumps = 2;
         }
 
+
+        //Send the data to the server if need be
+        public void sendData(Map map)
+        {
+            if (lastPosition != map.getBlock(blockId).position)
+                ServerConnection.sendMessage("move", map.getBlock(blockId).position);
+
+        }
+
+        //When you jump
+        private void jump(Map map)
+        {
+            if (jumps < 1) return;
+
+            jumps--;
+
+            map.getBlock(blockId).velocity.Y = jumpPower;
+
+        }
+        
         public void draw()
         {
 

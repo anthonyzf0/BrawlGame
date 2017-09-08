@@ -27,15 +27,15 @@ namespace Brawl.V4.Source.Server.Terrain
         //Creates the inital map
         public void loadMap()
         {
-            addBlock(new Vector3(3,0,3), new Vector3(0.5f, 0.5f, 0.5f));
+            addBlock(new Vector3(0, -2, 0), new Vector3(5f, 1.3f, 5f));
         }
     
         //Adds a block to this map
-        public int addBlock(Vector3 pos, Vector3 size)
+        public int addBlock(Vector3 pos, Vector3 size, Vector3 velocity, Vector3 acceleration, String tag)
         {
             blockIndex++;
 
-            Block b = new Block(pos, size, blockIndex);
+            Block b = new Block(pos, size, velocity, acceleration, blockIndex, tag);
 
             //Adds block
             terrainData.Add(blockIndex, b);
@@ -46,7 +46,11 @@ namespace Brawl.V4.Source.Server.Terrain
             return blockIndex;
 
         }
-        
+        public int addBlock(Vector3 pos, Vector3 size)
+        {
+            return addBlock(pos, size, Vector3.Zero, Vector3.Zero, "terrain");
+        }
+
         //Sends map to specific player
         public void sendMap(int client)
         {

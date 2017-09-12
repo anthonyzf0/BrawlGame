@@ -39,11 +39,10 @@ namespace Brawl.V4.Source.Game.Terrain
         }
 
         //Check player movement and return what is valid
-        public Vector3 playerMovement(int id, Vector3 amount)
+        public void playerMovement(int id, float gameTime)
         {
             //Has the collision file adjust the amount to move the player so they dont hit anything
-            amount = collision.adjustBlock(terrainMap[id], amount, terrainMap);
-            return amount;
+            collision.adjustBlock(terrainMap[id], terrainMap, gameTime);
         }
         
         public void update(float gameTime, Player p)

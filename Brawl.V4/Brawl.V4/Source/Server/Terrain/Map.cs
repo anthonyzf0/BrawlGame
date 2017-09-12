@@ -27,7 +27,8 @@ namespace Brawl.V4.Source.Server.Terrain
         //Creates the inital map
         public void loadMap()
         {
-            addBlock(new Vector3(0, -2, 0), new Vector3(5f, 1.3f, 5f));
+            addBlock(new Vector3(0, -3, 0), new Vector3(5f, 1.3f, 5f));
+            addBlock(new Vector3(2, 0, 2), new Vector3(1f, 2f, 1f));
         }
     
         //Adds a block to this map

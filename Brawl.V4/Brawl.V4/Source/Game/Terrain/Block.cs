@@ -10,8 +10,6 @@ namespace Brawl.V4.Source.Game.Terrain
 {
     class Block
     {
-        private static float averageTimestep = 0.04f;
-        
         //Position info
         public Vector3 position, size, velocity, acceleration, impulse;
 
@@ -33,23 +31,33 @@ namespace Brawl.V4.Source.Game.Terrain
         }
 
         //next position, used for collision
-        public Vector3 getNextPosition()
+        public Vector3 getNextPosition(float gameTime)
         {
-            return position + (impulse + velocity) * averageTimestep;
+            return (velocity + impulse ) * gameTime;
 
         }
 
+        //Hits the ground
         public void ground()
         {
-            velocity.Y = 0;
             grounded = true;
+        }
+
+        //Tells the block to stop moving in a derection
+        public void stop(Vector3 derections)
+        {
+            if (derections.Y == 0 && velocity.Y <0)
+                ground();
+
+            impulse *= derections;
+            velocity *= derections;
         }
 
         public void update(float gameTime)
         { 
             grounded = false;
 
-            position += velocity * gameTime;
+            position += (velocity + impulse) * gameTime;
             velocity += acceleration * gameTime;
         }
 
@@ -57,6 +65,9 @@ namespace Brawl.V4.Source.Game.Terrain
         {
             //Draw me
             render.draw("MonoCube", position, size);
+
+            if (tag == "player")
+                render.draw("MonoCube", position + Vector3.UnitZ, size);
 
         }
     }

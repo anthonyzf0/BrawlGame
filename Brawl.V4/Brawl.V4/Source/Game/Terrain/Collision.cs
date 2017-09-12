@@ -20,18 +20,17 @@ namespace Brawl.V4.Source.Game.Terrain
         //Will a hit b if a was at pos
         private bool hit(Vector3 aPos, Block a, Block b)
         {
-            return (Math.Abs(aPos.X - b.position.X) < a.size.X + b.size.X &&
-                    Math.Abs(aPos.Y - b.position.Y) < a.size.Y + b.size.Y &&
-                    Math.Abs(aPos.Z - b.position.Z) < a.size.Z + b.size.Z);
+            return (Math.Abs(aPos.X - b.position.X) < (a.size.X + b.size.X) &&
+                    Math.Abs(aPos.Y - b.position.Y) < (a.size.Y + b.size.Y) &&
+                    Math.Abs(aPos.Z - b.position.Z) < (a.size.Z + b.size.Z));
 
         }
-
+        
         //Moves block a to not hit things
-        public Vector3 adjustBlock(Block a, Vector3 movement, Dictionary<int, Block> map)
+        public void adjustBlock(Block a, Dictionary<int, Block> map, float gameTime)
         {
             //Gets the next position of "A"
-            a.impulse = movement;
-            Vector3 pos = a.getNextPosition();
+            Vector3 pos = a.getNextPosition(gameTime);
 
             //Movement in each derection
             Vector3 x = new Vector3(pos.X, 0, 0) + a.position;
@@ -44,26 +43,25 @@ namespace Brawl.V4.Source.Game.Terrain
                 if (a==map[key]) continue;
                 if (!collideableObjects.Contains(map[key].tag)) continue;
 
-                //If you would hit somewhere, then dont go that way
-                if (hit(x, a, map[key]))
-                {
-                    movement.X = 0;
-                    a.velocity.X = 0;
-                }
                 if (hit(y, a, map[key]))
                 {
-                    movement.Y = 0;
-                    a.ground();
+                    a.stop(new Vector3(1, 0, 1));
+                    
                 }
-                if (hit(z, a, map[key]))
+                
+                else if (hit(x, a, map[key]))
                 {
-                    movement.Z = 0;
-                    a.velocity.Z = 0;
+                    a.stop(new Vector3(0, 1, 1));
+                    
+                }
+                
+                else if (hit(z, a, map[key]))
+                {
+                    a.stop(new Vector3(1, 1, 0));
+                   
                 }
             }
-
-            return movement;
-
+            
         }
 
     }

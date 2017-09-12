@@ -41,10 +41,7 @@ namespace Brawl.V4.Source.Game
             //Initialize important components when you connect
             render = new Render3D(content);
             player = new Player();
-
-            //Start gameTime
-            gameTime.Start();
-
+            
             //Connects to the server
             network = new ServerConnection();
         }
@@ -63,6 +60,7 @@ namespace Brawl.V4.Source.Game
             map.update(deltaTime, player);
 
             //After everything is updated, send the player data to the server
+            player.moveCamera(map);
             player.sendData(map);
 
             //Sends all the messages queued to be sent
